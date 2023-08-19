@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts 'Seeding...'
+puts '.........'
+puts '.......'
+puts '.....'
+puts '...'
+puts '.'
+
+Dispenser.create(flow_volume: 0.1)
+
+puts 'Finished seeding.'
