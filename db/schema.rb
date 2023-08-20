@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_112924) do
 
   create_table "dispensers", force: :cascade do |t|
     t.float "flow_volume", null: false
+    t.float "cost_per_litre", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,10 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_112924) do
 
   create_table "transactions", force: :cascade do |t|
     t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
-    t.integer "total_time", null: false
-    t.float "total_volume", null: false
-    t.float "total_cost", null: false
+    t.datetime "end_time"
+    t.integer "total_time"
+    t.float "total_volume"
+    t.float "total_cost"
     t.bigint "dispenser_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -13,6 +13,6 @@ puts '.....'
 puts '...'
 puts '.'
 
-Dispenser.create(flow_volume: 0.1)
+FactoryBot.create(:dispenser)
 
 puts 'Finished seeding.'

@@ -6,7 +6,11 @@ class DispensersController < ApplicationController
   end
 
   def show
-    render json: @dispenser
+    if @dispenser
+      render json: @dispenser
+    else
+      render json: { error: 'Dispenser not found' }, status: :not_found
+    end
   end
 
   def create
@@ -37,13 +41,23 @@ class DispensersController < ApplicationController
     end
   end
 
+  def calculate_spend
+    if @dispenser&.open?
+      render json: { current_spend: @dispenser.calculate_spend }
+    elsif @dispenser&.closed?
+      render json: { error: 'Tap is not open currently.' }, status: :unprocessable_entity
+    else
+      render json: { error: 'Tap not found' }, status: :not_found
+    end
+  end
+
   private
 
   def set_dispenser
-    @dispenser = Dispenser.find(params[:id])
+    @dispenser = Dispenser.find_by(id: params[:id])
   end
 
   def dispenser_params
-    params.require(:dispenser).permit(:flow_volume)
+    params.require(:dispenser).permit(:flow_volume, :cost_per_litre)
   end
 end
