@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_112924) do
   end
 
   create_table "tap_logs", force: :cascade do |t|
-    t.integer "type", default: 0, null: false
+    t.integer "event_type", default: 0, null: false
     t.bigint "dispenser_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
